@@ -48,7 +48,6 @@ public class Application {
             System.out.println("inserire r per aggiungere una rivista");
             System.out.println("inserire p per aggiungere un nuovo prestito");
             System.out.println("inserire e per eliminare un elemento via codice ISBN (intero)");
-            System.out.println("inserire d per eliminare un prestito via codice ISBN elemento (intero)");
             System.out.println("inserire c per le opzioni di ricerca");
             System.out.println("inserire q per uscire");
             op = scanner.nextLine();
@@ -171,24 +170,6 @@ public class Application {
                         break;
                     } else {
                         System.out.println("impossibile salvare il prestito");
-                        break;
-                    }
-
-
-                case "d":
-                    long prIsbn = 0;
-                    System.out.println("inserire codice ISBN dell' elemento di cui eliminare il prestito");
-                    try {
-                        prIsbn = Long.parseLong(scanner.nextLine());
-                        Elemento prestato = ed.findBISBN(prIsbn);
-                        Prestito foundPr = prestato.getPrestito();
-                        System.out.println(foundPr.getIdPrestito());
-                        long pid = foundPr.getIdPrestito();
-                        pd.eliminaId(pid);
-                        break;
-
-                    } catch (RuntimeException ex) {
-                        System.out.println("input non valido");
                         break;
                     }
 
