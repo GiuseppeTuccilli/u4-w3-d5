@@ -9,7 +9,7 @@ public class Application {
 
     public static void main(String[] args) {
         EntityManager em = emf.createEntityManager();
-        
+
 
         em.close();
         emf.close();
