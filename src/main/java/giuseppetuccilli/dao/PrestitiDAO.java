@@ -3,6 +3,10 @@ package giuseppetuccilli.dao;
 import giuseppetuccilli.entities.Prestito;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.TypedQuery;
+
+import java.time.LocalDate;
+import java.util.List;
 
 public class PrestitiDAO {
     private EntityManager em;
@@ -34,6 +38,13 @@ public class PrestitiDAO {
         em.remove(found);
         tr.commit();
         System.out.println("prestito eliminato");
+    }
+
+    public List<Prestito> cercaPresScaduti() {
+        LocalDate today = LocalDate.now();
+        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.restituzionePrevista < :now AND p.restEffettiva IS NULL", Prestito.class);
+        query.setParameter("now", today);
+        return query.getResultList();
     }
 
 }
