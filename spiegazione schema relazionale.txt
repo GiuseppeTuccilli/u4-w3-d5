@@ -1,0 +1,7 @@
+l'idea è quella di avere una tabella libro e una tabella rivista relazionate entrambe 1a1 con elementi,
+che contiene proprietà in comune tra le due, sebbene non si dovrebbe poter istanziare 
+un elemento in modo generico, ma solo come libro e rivista.
+Per come ho inteso la traccia, ogni utente potrà avere diversi prestiti associati, mentre un prestito può essere associato 
+ad un solo cliente e ad un solo elemento, in pratica non è possibile fare due prestiti dello stesso libro.
+Questa scelta è frutto di interpretazione personale della traccia.
+Ciò si traduce in tabella prestiti relazionata 1molti con utenti e 1a1 con elementi.
