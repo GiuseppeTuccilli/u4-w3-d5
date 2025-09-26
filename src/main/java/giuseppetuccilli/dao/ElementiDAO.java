@@ -57,5 +57,15 @@ public class ElementiDAO {
         return query.getResultList();
     }
 
+    public Long getNumbEl() {
+        TypedQuery<Long> query = em.createQuery("SELECT COUNT(e) FROM Elemento e", Long.class);
+        return query.getSingleResult();
+    }
+
+    public List<Elemento> getNonPrest() {
+        TypedQuery<Elemento> query = em.createQuery("SELECT e FROM Elemento e WHERE e.prestito IS NULL", Elemento.class);
+        return query.getResultList();
+    }
+
 
 }

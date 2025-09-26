@@ -47,4 +47,10 @@ public class PrestitiDAO {
         return query.getResultList();
     }
 
+    public List<Prestito> findAll() {
+        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p", Prestito.class);
+        return query.getResultList();
+    }
+
+
 }

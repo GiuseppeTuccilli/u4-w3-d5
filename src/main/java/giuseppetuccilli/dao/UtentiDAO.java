@@ -53,4 +53,9 @@ public class UtentiDAO {
         return els;
 
     }
+
+    public Long getNumbUt() {
+        TypedQuery<Long> query = em.createQuery("SELECT COUNT(u) FROM Utente u", Long.class);
+        return query.getSingleResult();
+    }
 }
