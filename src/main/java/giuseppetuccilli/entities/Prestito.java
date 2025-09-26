@@ -65,6 +65,10 @@ public class Prestito {
         return utente;
     }
 
+    public void setUtente(Utente utente) {
+        this.utente = utente;
+    }
+
     public Elemento getElemento() {
         return elemento;
     }

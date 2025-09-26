@@ -167,7 +167,7 @@ public class Application {
                         }
                     }
                     if (ok) {
-                        pd.nuovoPrestito(pr);
+                        pd.nuovoPrestito(pr, u);
                         break;
                     } else {
                         System.out.println("impossibile salvare il prestito");
@@ -182,7 +182,9 @@ public class Application {
                         prIsbn = Long.parseLong(scanner.nextLine());
                         Elemento prestato = ed.findBISBN(prIsbn);
                         Prestito foundPr = prestato.getPrestito();
-                        System.out.println(foundPr);
+                        System.out.println(foundPr.getIdPrestito());
+                        long pid = foundPr.getIdPrestito();
+                        pd.eliminaId(pid);
                         break;
 
                     } catch (RuntimeException ex) {

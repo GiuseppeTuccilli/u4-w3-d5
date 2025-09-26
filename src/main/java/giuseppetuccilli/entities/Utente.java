@@ -59,6 +59,10 @@ public class Utente {
         return prestiti;
     }
 
+    public void addPres(Prestito p) {
+        prestiti.add(p);
+    }
+
     @Override
     public String toString() {
         return "Utente{" +

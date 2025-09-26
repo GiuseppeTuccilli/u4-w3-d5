@@ -1,6 +1,7 @@
 package giuseppetuccilli.dao;
 
 import giuseppetuccilli.entities.Prestito;
+import giuseppetuccilli.entities.Utente;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.TypedQuery;
@@ -15,9 +16,11 @@ public class PrestitiDAO {
         this.em = e;
     }
 
-    public void nuovoPrestito(Prestito pr) {
+    public void nuovoPrestito(Prestito pr, Utente u) {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
+        pr.setUtente(u);
+        u.addPres(pr);
         em.persist(pr);
         tr.commit();
         System.out.println("prestito salvato");
