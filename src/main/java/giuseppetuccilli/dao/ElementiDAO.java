@@ -45,5 +45,11 @@ public class ElementiDAO {
         return query.getResultList();
     }
 
+    public List<Elemento> cercaPerAutore(String partName) {
+        TypedQuery query = em.createQuery("SELECT e FROM Elemento e WHERE LOWER(e.autore) LIKE LOWER(:partName) ", Elemento.class);
+        query.setParameter("partName", partName + "%");
+        return query.getResultList();
+    }
+
 
 }

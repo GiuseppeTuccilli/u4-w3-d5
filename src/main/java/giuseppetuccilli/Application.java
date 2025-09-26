@@ -17,7 +17,8 @@ public class Application {
         Libro libro2 = new Libro("titoloLibro2", 2004, 300, "autore1", "horror");
         //ed.aggElement(libro1);
         //ed.aggElement(libro2);
-        System.out.println(ed.cercaPerAnno(2005));
+        System.out.println(ed.cercaPerAutore("au"));
+
 
         em.close();
         emf.close();
