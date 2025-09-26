@@ -40,13 +40,19 @@ public class ElementiDAO {
     }
 
     public List<Elemento> cercaPerAnno(int anno) {
-        TypedQuery query = em.createQuery("SELECT e FROM Elemento e WHERE e.annoDiPubblicazione = :anno", Elemento.class);
+        TypedQuery<Elemento> query = em.createQuery("SELECT e FROM Elemento e WHERE e.annoDiPubblicazione = :anno", Elemento.class);
         query.setParameter("anno", anno);
         return query.getResultList();
     }
 
     public List<Elemento> cercaPerAutore(String partName) {
-        TypedQuery query = em.createQuery("SELECT e FROM Elemento e WHERE LOWER(e.autore) LIKE LOWER(:partName) ", Elemento.class);
+        TypedQuery<Elemento> query = em.createQuery("SELECT e FROM Elemento e WHERE LOWER(e.autore) LIKE LOWER(:partName) ", Elemento.class);
+        query.setParameter("partName", partName + "%");
+        return query.getResultList();
+    }
+
+    public List<Elemento> cercaPerTitolo(String partName) {
+        TypedQuery<Elemento> query = em.createQuery("SELECT e FROM Elemento e WHERE LOWER(e.titolo) LIKE LOWER(:partName) ", Elemento.class);
         query.setParameter("partName", partName + "%");
         return query.getResultList();
     }
