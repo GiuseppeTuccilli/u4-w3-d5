@@ -2,8 +2,6 @@ package giuseppetuccilli.entities;
 
 import jakarta.persistence.*;
 
-import java.time.Year;
-
 @Entity
 @Table(name = "elementi")
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -12,13 +10,13 @@ public class Elemento {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected long codISBN;
     protected String titolo;
-    protected Year annoDiPubblicazione;
+    protected int annoDiPubblicazione;
     protected int numeroPagine;
 
     public Elemento() {
     }
 
-    public Elemento(String titolo, Year annoPubl, int pagine) {
+    public Elemento(String titolo, int annoPubl, int pagine) {
         this.titolo = titolo;
         this.annoDiPubblicazione = annoPubl;
         this.numeroPagine = pagine;
@@ -36,11 +34,11 @@ public class Elemento {
         this.titolo = titolo;
     }
 
-    public Year getAnnoDiPubblicazione() {
+    public int getAnnoDiPubblicazione() {
         return annoDiPubblicazione;
     }
 
-    public void setAnnoDiPubblicazione(Year annoDiPubblicazione) {
+    public void setAnnoDiPubblicazione(int annoDiPubblicazione) {
         this.annoDiPubblicazione = annoDiPubblicazione;
     }
 

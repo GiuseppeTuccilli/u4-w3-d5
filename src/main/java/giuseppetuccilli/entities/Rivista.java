@@ -2,19 +2,20 @@ package giuseppetuccilli.entities;
 
 import giuseppetuccilli.enums.Periodicità;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
-
-import java.time.Year;
 
 @Entity
 @Table(name = "riviste")
 public class Rivista extends Elemento {
+    @Enumerated(EnumType.STRING)
     private Periodicità periodicità;
 
     public Rivista() {
     }
 
-    public Rivista(String titolo, Year annoPubl, int pagine, Periodicità per) {
+    public Rivista(String titolo, int annoPubl, int pagine, Periodicità per) {
         super(titolo, annoPubl, pagine);
         this.periodicità = per;
     }

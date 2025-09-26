@@ -6,8 +6,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
-import java.time.Year;
-
 public class Application {
     public static EntityManagerFactory emf = Persistence.createEntityManagerFactory("u4-w3-d5pu");
 
@@ -15,8 +13,11 @@ public class Application {
         EntityManager em = emf.createEntityManager();
         ElementiDAO ed = new ElementiDAO(em);
 
-        Libro libro1 = new Libro("titoloLibro", Year.of(2005), 200, "autore1", "fantasy");
-        // ed.aggElement(libro1);
+        Libro libro1 = new Libro("titoloLibro", 2005, 200, "autore1", "fantasy");
+        Libro libro2 = new Libro("titoloLibro2", 2004, 300, "autore1", "horror");
+        //ed.aggElement(libro1);
+        //ed.aggElement(libro2);
+        System.out.println(ed.cercaPerAnno(2005));
 
         em.close();
         emf.close();

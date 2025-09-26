@@ -3,8 +3,6 @@ package giuseppetuccilli.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-import java.time.Year;
-
 @Entity
 @Table(name = "libri")
 public class Libro extends Elemento {
@@ -14,7 +12,7 @@ public class Libro extends Elemento {
     public Libro() {
     }
 
-    public Libro(String titolo, Year annoPubl, int pagine, String autore, String genere) {
+    public Libro(String titolo, int annoPubl, int pagine, String autore, String genere) {
         super(titolo, annoPubl, pagine);
         this.autore = autore;
         this.genere = genere;
