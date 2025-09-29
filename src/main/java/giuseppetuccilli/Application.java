@@ -42,6 +42,7 @@ public class Application {
         Utente ut2 = new Utente("pluto", "kjh", LocalDate.of(1995, 1, 27));
         Rivista riv1 = new Rivista("titoloRivista", 2024, 50, Periodicità.MENSILE);
 
+
         while (true) {
             System.out.println("catalogo libri e riviste; [elementi attuali: " + ed.getNumbEl() + "; utenti attuali: " + ud.getNumbUt() + "]");
             System.out.println("inserire l per aggiungere un libro");
@@ -157,7 +158,7 @@ public class Application {
                     Prestito pr = new Prestito(u, e, d);
                     List<Prestito> prestiti = pd.findAll();
                     boolean ok = true;
-
+                    
                     for (int i = 0; i < prestiti.size(); i++) {
                         if (prestiti.get(i).getElemento().equals(e)) {
 
@@ -165,6 +166,8 @@ public class Application {
                             break;
                         }
                     }
+
+
                     if (ok) {
                         pd.nuovoPrestito(pr, u);
                         break;
@@ -175,7 +178,7 @@ public class Application {
 
 
                 case "c":
-                    System.out.println("Opzioni di ricerca: inserire un numero da 1 a 1");
+                    System.out.println("Opzioni di ricerca: inserire un numero da 1 a 6");
                     System.out.println("1 = Cerca per ISBN");
                     System.out.println("2 = Cerca per anno pubblicazione");
                     System.out.println("3 = Cerca per autore");
@@ -217,8 +220,7 @@ public class Application {
                             System.out.println("inserire numero tessera (intero)");
                             try {
                                 tess = Long.parseLong(scanner.nextLine());
-                                Utente ut = ud.findByTessera(stess);
-                                System.out.println(ut.getPrestiti());
+                                System.out.println(pd.getPrestTessera(tess));
                                 break;
                             } catch (RuntimeException ex) {
                                 System.out.println("input non valido, " + ex.getMessage());

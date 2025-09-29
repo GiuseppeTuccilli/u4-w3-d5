@@ -3,7 +3,6 @@ package giuseppetuccilli.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "utenti")
@@ -14,8 +13,8 @@ public class Utente {
     private String nome;
     private String cognome;
     private LocalDate dataDiNascita;
-    @OneToMany
-    private List<Prestito> prestiti;
+    //@OneToMany
+    //private List<Prestito> prestiti;
 
 
     public Utente() {
@@ -55,6 +54,8 @@ public class Utente {
         this.dataDiNascita = dataDiNascita;
     }
 
+    /*
+
     public List<Prestito> getPrestiti() {
         return prestiti;
     }
@@ -62,7 +63,7 @@ public class Utente {
     public void addPres(Prestito p) {
         prestiti.add(p);
     }
-
+*/
     @Override
     public String toString() {
         return "Utente{" +

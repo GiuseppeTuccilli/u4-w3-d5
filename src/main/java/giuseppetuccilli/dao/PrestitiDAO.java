@@ -1,5 +1,6 @@
 package giuseppetuccilli.dao;
 
+import giuseppetuccilli.entities.Elemento;
 import giuseppetuccilli.entities.Prestito;
 import giuseppetuccilli.entities.Utente;
 import jakarta.persistence.EntityManager;
@@ -20,7 +21,6 @@ public class PrestitiDAO {
         EntityTransaction tr = em.getTransaction();
         tr.begin();
         pr.setUtente(u);
-        u.addPres(pr);
         em.persist(pr);
         tr.commit();
         System.out.println("prestito salvato");
@@ -52,6 +52,18 @@ public class PrestitiDAO {
 
     public List<Prestito> findAll() {
         TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p", Prestito.class);
+        return query.getResultList();
+    }
+
+    public List<Prestito> getPrestTessera(long tess) {
+        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.utente.numeroTessera = :tess", Prestito.class);
+        query.setParameter("tess", tess);
+        return query.getResultList();
+    }
+
+    public List<Prestito> getPresElem(Elemento el) {
+        TypedQuery<Prestito> query = em.createQuery("SELECT p FROM Prestito p WHERE p.elemento.codISBN = :sbn", Prestito.class);
+        query.setParameter("sbn", el.getCodISBN());
         return query.getResultList();
     }
 
